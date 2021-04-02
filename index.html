@@ -4,33 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>JavaScript activity 28 Mini Project</title>
-    <meta name="description" content="Mini Project for JavaScript section in Northwestern University Coding Bootcamp.">
+    <meta name="description" content="Rock Paper Scissors mini project for JavaScript section at Northwestern University Coding Bootcamp.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css">
-
-    <style>
-      main {
-        display: flex;
-      }
-
-      main section {
-        width: 50%;
-        border: 1px dashed #000;
-        margin: 5%;
-        padding: 4%;
-      }
-    </style>
+    <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <body>
 
     <header>
       <h1>Rock Paper Scissors</h1>
+      <h2>Emoji edition.</h2>
       <article class="scorecard">
         <h2>Games</h2>
-        <p>Score:</p>
-        <p>Player 1 - <span id="player1score"></span></p>
-        <p>Player 2 - <span id="player2score"></span></p>
-        <p>Draws - <span id="drawsScore"></span></p>
+        <p>Player 1 - <span id="player1score">0</span></p>
+        <p>Player 2 - <span id="player2score">0</span></p>
+        <p>Draws - <span id="drawsScore">0</span></p>
       </article>
     </header>
 
@@ -41,16 +28,15 @@
         <h1>Player 1</h1>
 
         <button id="play-button" class="btn">Play</button>
-        <button id="play-again-button" class="btn">Play Again</button>
         <button id="quit-button" class="btn">Quit</button>
 
       </section>
 
-      <div id="player1hand">
-        
-      </div>
+      <div class="play-area">
 
-      <div id="player2hand">
+        <div id="player1hand"></div>
+
+        <div id="player2hand"></div>
 
       </div>
 
@@ -61,102 +47,6 @@
       </section>
     </main>
 
-    <script>
-      //assign global variables
-      const player1Score = document.getElementById('player1score')
-      const player2Score = document.getElementById('player2score')
-      const drawsScore = document.getElementById('drawsScore')
-      const player1Hand = document.getElementById('player1hand')
-      const player2Hand = document.getElementById('player2hand')
-      const playButton = document.getElementById('play-button')
-      const playAgainButton = document.getElementById('play-again-button')
-      const quitButton = document.getElementById('quit-button')
-
-      let p1Score = 0, compScore = 0;
-
-      const plays = ["rock", "paper", "scissors"]
-
-      const determineWinner = (playerChoice, computerChoice) => {
-        switch (playerChoice) {
-          case "rock":
-            switch (computerChoice) {
-              case "rock":
-                alert("It's a draw!")
-                break;
-              case "paper":
-                compScore += 1;
-                break;
-              case "scissors":
-                p1Score += 1;
-                break;
-            }
-            break;
-          case "paper":
-            switch (computerChoice) {
-              case "rock":
-                p1Score += 1;
-                break;
-              case "paper":
-                  alert("It's a draw!")
-                break;
-              case "scissors":
-                compScore += 1;
-                break;
-            }
-            break;
-          case "scissors":
-            switch (computerChoice) {
-              case "rock":
-                compScore += 1;
-                break;
-              case "paper":
-                p1Score += 1;
-                break;
-              case "scissors":
-                  alert("It's a draw!")
-                break;
-            }
-            break;
-          default:
-            null;
-        }
-      }
-
-      const selectRandom = (max = 3, min = 0) => {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
-
-      const playButtonHandler = () => {
-        const playerChoice = prompt("rock, paper, or scissors?", "rock");
-        const computerChoice = plays[selectRandom()]
-        if (
-          playerChoice.toLowerCase() === "rock" ||
-          playerChoice.toLowerCase() === "paper" ||
-          playerChoice.toLowerCase() === "scissors"
-          ) { determineWinner(playerChoice, computerChoice) }
-        else { alert("Incorrect play choice. Please select, rock, paper, or scissors.") }
-
-        player1Score.innerHTML = p1Score ? p1Score : 0;
-        player2Score.innerHTML = compScore ? compScore : 0;
-      }
-
-      const playAgainButtonHandler = () => {
-
-      }
-
-      const quitButtonHandler = () => {
-        alert("Thanks for playing!")
-
-        player1Score.innerHTML = 0;
-        player2Score.innerHTML = 0;
-      }
-
-      //event listeners
-      playButton.addEventListener("click", playButtonHandler)
-      playAgainButton.addEventListener("click", playAgainButtonHandler)
-      quitButton.addEventListener("click", quitButtonHandler)
-    </script>
-
-    <script src="/assets/script.js" async defer></script>
+    <script src="./assets/js/script.js" async defer></script>
   </body>
 </html>
