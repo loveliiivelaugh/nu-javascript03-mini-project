@@ -1,4 +1,10 @@
 /* Global Styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   background: linear-gradient(#fff, #22b);
   height: 100vh;
